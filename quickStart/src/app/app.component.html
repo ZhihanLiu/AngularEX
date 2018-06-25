@@ -1,20 +1,75 @@
 
-<div>{{title}}</div>
+
+<p [ngStyle] = "styleHead"> ngClass </p>
+<div [ngClass] ="classStyle" >{{title}}</div>
     
-    
+<p [ngStyle] = "styleHead">ngModel </p>
 <div> <input type = "text" [(ngModel)] = 'title'/> </div>
 
-
+<p [ngStyle] = "styleHead">click event</p>
 <button  (click) = "call('dw')">text</button>
 
+<P [ngStyle] = "styleHead">ngIf</P>
 <div *ngIf = "!flag" >
 
 
     <button  (click) = "change()">text</button>
 </div>
 
-
+<P [ngStyle] = "styleHead">property bind </P>
 <div [hidden] = "flag" >                           <!--  propety -->
 
     <button  (click) = "title = 'ass'">text</button>    <!--Event bind-->
 </div>
+
+<p [ngStyle] = "styleHead">ngFor, customerized pipe</p>
+<div *ngFor = 'let item of (books|myPipe:search)' >
+ <ul [ngStyle] = "style">{{item.id}}</ul>
+ <ul [style.background-color]="'darkorchid'">{{item.Title|myPipe}}</ul>
+
+</div>
+<P [ngStyle] = "styleHead"> search string in table</P>
+<input type = "text" [(ngModel)] = "search">
+
+<P [ngStyle] = "styleHead"> form validitor 1</P>
+<form #myForm = "ngForm">
+    First name:<br>
+    <input type="text" ngModel  required name="firstname" #firstname = "ngModel" >
+    <br>
+    Last name:<br>
+    <input type="text" ngModel name="lastname" #lastname = "ngModel"  >
+    
+    <input type="submit" value="Submit">
+  </form> 
+     
+  <p *ngIf = "!myForm.valid && myForm.touched" >
+      {{myForm.value|json }}
+  </p>
+
+
+  <P [ngStyle] = "styleHead"> form validitor 2</P>
+<form [formGroup] = form>
+    First name:<br>
+    <input type="text"  formControlName = "firstname"  (keyup.enter)="see(form)">
+    <br>
+    Last name:<br>
+    <input type="text" formControlName = "lastname"  >
+    
+    <input type="submit" value="Submit">
+  </form> 
+ 
+  <p *ngIf = "!firstname.valid" >
+ 
+  </p>
+
+  <nav>
+    <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+    <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
+  
+
+  <input type = 'text' [(ngModel)] ="ss"/> <button (click) =" ww=ss">send</button>
+
+  <p>Farther: {{ww}}</p>
+  <app-home [number] = "ww" (change)="countChange($event)"></app-home>
