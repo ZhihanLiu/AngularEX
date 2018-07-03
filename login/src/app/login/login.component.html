@@ -1,0 +1,14 @@
+<form [formGroup] = "form">
+    <div class="form-group">
+        <label class="center-block">User Name:
+          <input class="form-control" formControlName="name" #name>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="center-block">password:
+          <input class="form-control" formControlName="password" #password >
+        </label>
+    </div>
+    <input type="submit" value="Submit" [disabled] = "!form.valid" (click) = "login(name.value, password.value)">
+    {{form.value|json}}
+</form>
