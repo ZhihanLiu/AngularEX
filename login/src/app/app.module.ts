@@ -8,6 +8,8 @@ import { MyWeiboComponent } from './my-weibo/my-weibo.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
@@ -15,13 +17,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     MyWeiboComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

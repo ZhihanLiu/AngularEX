@@ -9,6 +9,7 @@ import {LoginServiceService} from '../service/login-service.service'
 export class LoginComponent implements OnInit {
   flag:number;
   form:FormGroup;
+  loginFlag= false;
   constructor(private fb:FormBuilder,private lis:LoginServiceService) { 
     this.form = this.fb.group({
       name:['',Validators.required],
@@ -20,10 +21,12 @@ export class LoginComponent implements OnInit {
   login(username:string, password:string) {
    this.lis.login(username, password).subscribe(data => {
      this.flag = data;
+     if(data == -1) this.loginFlag = true;
      console.log("login :" + data);
     });
 
   }
+  
 
   ngOnInit() {
   }

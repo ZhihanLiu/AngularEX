@@ -1,14 +1,56 @@
-<form [formGroup] = "form">
-    <div class="form-group">
-        <label class="center-block">User Name:
-          <input class="form-control" formControlName="name" #name>
-        </label>
-    </div>
-    <div class="form-group">
-        <label class="center-block">password:
-          <input class="form-control" formControlName="password" #password >
-        </label>
-    </div>
-    <input type="submit" value="Submit" [disabled] = "!form.valid" (click) = "login(name.value, password.value)">
-    {{form.value|json}}
-</form>
+
+<div *ngIf = "loginFlag" class="alert alert-warning alert-dismissible fade show" role="alert" #alert  >
+    <strong>Holy guacamole!</strong> Your username or password can not be found!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+
+<div [ngStyle]="{'background-image': 'url(../assets/images/login.jpg)','background-size': 'cover','margin': '0px',
+'padding': '0px'}">
+    <div class="container" >
+           
+      <header>
+          <h1>Login and Registration Form</h1>
+  
+      </header>
+      <section>				
+          <div id="container_demo" >
+              <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+              <a class="hiddenanchor" id="toregister"></a>
+              <a class="hiddenanchor" id="tologin"></a>
+              <div id="wrapper">
+                  <div id="login" class="animate form" >
+                      <form [formGroup] = "form"> 
+                          <h1>Log in</h1> 
+                          <p> 
+                              <label for="username" class="uname" > Your email or username </label>
+                              <input formControlName="name" #name type="text" placeholder="myusername or mymail@mail.com"/>
+                          </p>
+                          <p> 
+                              <label for="password" class="youpasswd"> Your password </label>
+                              <input formControlName="password" #password type="password" placeholder="eg. X8df!90EO" /> 
+                          </p>
+                          <p class="keeplogin"> 
+            <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+            <label for="loginkeeping">Keep me logged in</label>
+            <p class="signin button"> 
+          <input  type="submit" value="Submit" [disabled] = "!form.valid" (click) = "login(name.value, password.value)">
+         </p>
+                          
+          <p class="change_link"> Not a member yet ?
+            <a  routerLink = "/register" class="to_register">Join us</a> </p>
+           
+                      </form>
+                  </div>
+  
+              
+      
+              </div>
+          </div>  
+      </section>
+  </div>
+
+</div>

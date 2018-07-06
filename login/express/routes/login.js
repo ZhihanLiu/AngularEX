@@ -6,6 +6,7 @@ var createError = require('http-errors');
 var db = require('../model/db');
 
 
+
 router.get('/', function(req, res, next) {
     res.sendFile('index.html', { root: path.join(__dirname, '../public')});
   });
