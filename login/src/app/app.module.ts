@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule }   from '@angular/forms';
+import { PasswordConfirmDirective } from './directives/password-confirm.directive';
+
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { FormsModule }   from '@angular/forms';
     HomeComponent,
     MyWeiboComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordConfirmDirective,
+    
   ],
   imports: [
     BrowserModule,
