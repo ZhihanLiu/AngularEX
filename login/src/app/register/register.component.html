@@ -1,51 +1,55 @@
-<div  [ngStyle]="{'background-image': 'url(../assets/images/login.jpg)','background-size': 'cover'}">
+<div [ngStyle]="{'background-image': 'url(../assets/images/login.jpg)','background-size': 'cover'}">
 
-<section >				
-  <div id="container_demo" >
+  <section>
+    <div id="container_demo">
       <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
       <a class="hiddenanchor" id="toregister"></a>
       <a class="hiddenanchor" id="tologin"></a>
       <div id="wrapper">
 
-<div id="wrapper">
-    <div id="login" class="animate form" >
-  <form  [formGroup] ="form" appPasswordConfirm> 
-      <h1> Sign up </h1> 
-      <p> 
-          <label for="usernamesignup" class="uname" >Your username</label>
-          <input id="usernamesignup" name="usernamesignup" placeholder="mysuperusername690" formControlName = "username" />
-      </p>
-      <p> 
-          <label for="emailsignup" class="youmail"  > Your email</label>
-          <input id="emailsignup" name="emailsignup"  placeholder="mysupermail@mail.com" formControlName = "email"/> 
-      </p>
-      <p> 
-          <label for="passwordsignup" class="youpasswd" >Your password </label>
-          <input id="passwordsignup" name="passwordsignup"  type="password" placeholder="eg. X8df!90EO" formControlName = "password"/>
-      </p>
-      <p> 
-          <label for="passwordsignup_confirm" class="youpasswd" >Please confirm your password </label>
-          <input id="passwordsignup_confirm" name="passwordsignup_confirm"  type="password" placeholder="eg. X8df!90EO" formControlName = "passwordConfirm"/>
-      </p>
+        <div id="wrapper">
+          <div id="login" class="animate form">
+            <form [formGroup]="form" appPasswordConfirm>
+              <h1> Sign up </h1>
+              <p>
+                  <label for="usernamesignup" class="uname">Your username</label>
+                  <input id="usernamesignup" #username  placeholder="mysuperusername690" formControlName="username"  />
+                </p>
+                <p>
+                  <label for="emailsignup" class="youmail"> Your email</label>
+                  <input id="emailsignup" #email  placeholder="mysupermail@mail.com" formControlName="email" />
+                </p>
+                <p>
+                  <label for="passwordsignup" class="youpasswd">Your password </label>
+                  <input id="passwordsignup" #password type="password" placeholder="eg. X8df!90EO" formControlName="password" />
+                </p>
+                <p>
+                  <label for="passwordsignup_confirm" class="youpasswd">Please confirm your password </label>
+                  <input id="passwordsignup_confirm" #passwordConfirm type="password" placeholder="eg. X8df!90EO" formControlName="passwordConfirm"
+                  />
+                </p>
+  
+  
+  
+  
 
-     
-    
-      <div class="alert alert-danger" role="alert" *ngIf=" !form.errors?.match && (form.touched || form.dirty)" >
-          Password does not match
+              <div class="alert alert-danger" role="alert" *ngIf=" !form.errors?.match && (form.touched || form.dirty)">
+                Password does not match
+              </div>
+
+              <p class="signin button">
+                <input type="submit" value="Sign up"  (click) =" signUp(username.value,email.value,password.value,passwordConfirm.value)"/>
+              </p>
+             
+              <p class="change_link">
+                Already a member ?
+                <a href="login" class="to_register"> Go and log in </a>
+              </p>
+            </form>
+          </div>
+        </div>
+
       </div>
-     
-      <p class="signin button"> 
-<input type="submit" value="Sign up"/> 
-</p>
-      <p class="change_link">  
-Already a member ?
-<a href="login" class="to_register"> Go and log in </a>
-</p>
-  </form>
-  </div>
-</div>
-
-</div>
-</div>
-</section>
+    </div>
+  </section>
 </div>
