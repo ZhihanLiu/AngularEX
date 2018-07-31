@@ -13,6 +13,7 @@ import { RegisterService } from '../service/register.service';
 export class RegisterComponent implements OnInit {
   private fd :signUpForm;
     form:FormGroup;
+    alert:string;
    constructor(private fb: FormBuilder, private reg: RegisterService) {
     this.fd = new signUpForm();
     this.form = this.fb.group({
@@ -33,7 +34,7 @@ export class RegisterComponent implements OnInit {
 
    this.reg.signUp(this.fd).subscribe(data => {
   
-    console.log( data.user);
+     console.log(data);
    });
 ;
 

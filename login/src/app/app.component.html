@@ -25,13 +25,14 @@
               <a  class="nav-link" routerLink="/myWeibo">My Weibo</a>
           </li>
         </ul>
-        <span class="navbar-text">
-            <a  class="nav-link" routerLink="/login">Log in</a>
+        <span class="navbar-text" >
+            <a  class="nav-link" routerLink="/login" *ngIf ="!username"  >Log in</a>
+            <a  *ngIf ="username" >Welcome {{username}}! Logout</a>
         </span>
       </div>
   
   </nav>
-  <router-outlet></router-outlet>
+  <router-outlet ></router-outlet>
 
   
 

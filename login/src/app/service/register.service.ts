@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type':  ' application/json ',
     'Authorization': 'my-auth-token'
   })
 };
@@ -20,11 +20,11 @@ export class RegisterService {
 
   signUp( fd :signUpForm): Observable<any>{
     console.log("fd:   "+fd.username);
-    return this.http.post('./register',fd, httpOptions);
+    return this.http.post('./register',fd,httpOptions);
     }
 
     data(res: Response) {
       const body = res.json();
       return body || {};
-  }
+   }
 }

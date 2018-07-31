@@ -1,5 +1,11 @@
 <div [ngStyle]="{'background-image': 'url(../assets/images/login.jpg)','background-size': 'cover'}">
 
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf = 'alert'>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  </div>
   <section>
     <div id="container_demo">
       <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->

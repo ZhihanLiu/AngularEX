@@ -13,10 +13,11 @@ router.get('/', function(req, res, next) {
 /* GET users listing. */
 router.post('/', function(req, res, next) {
  
-  user.find({username:req.body.user,password:req.body.password}, function(err,docs){
+  user.findOne({username:req.body.user,password:req.body.password}, function(err,docs){
+   
           if(err){
             next(createError(500));
-           res.send("0");
+          
           }
           else{
             if(docs == null || docs.length< 1 ){
@@ -24,7 +25,7 @@ router.post('/', function(req, res, next) {
             }
             else{
               console.log(docs);
-              res.send("1");
+              res.json({user:docs.username});
             }
           }
           

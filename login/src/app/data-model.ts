@@ -6,3 +6,13 @@ export class signUpForm{
    password = "";
    passwordConfirm = "";
 }
+
+
+
+export class user{
+    username= "";
+
+    password = "";
+  
+ }
+ 

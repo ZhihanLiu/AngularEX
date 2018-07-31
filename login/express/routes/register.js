@@ -12,8 +12,33 @@ router.get('/', function(req, res, next) {
   });
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-   console.log("ssss");
-   res.json("woca");
+
+   user.findOne({$or:[{username:req.body.username},{email:req.body.email}]}, (err,data)=>{
+     console.log(req);
+    console.log(data);
+     if(err) next();
+     if(data != null  ){
+      console.log('1');
+        res.send( {message:"The username or email has been signed up!"});
+     }
+     else{
+      console.log('2');
+       var newUser = new user({
+        username:req.body.username,
+        email:req.body.email,
+        password:req.body.password
+       });
+       newUser.save((err, data) =>{
+          if(err) next();
+          else{
+            res.send({message:"Signed Up Complete"});
+          }
+       }       );
+       
+     }
+             
+   });
+
 });
 
 module.exports = router;

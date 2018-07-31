@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
  
 import { Observable, of, } from 'rxjs';
@@ -25,7 +25,9 @@ export class LoginServiceService {
       return of(result as T);
     };
   }
-
+  result:Observable<any>;
+  user:String;
+  userEmitter = new EventEmitter<String>();
   constructor(private http: HttpClient) {
    }
    login(username:string, password:string): Observable<any> {
@@ -37,13 +39,24 @@ export class LoginServiceService {
     body.user = username;
     body.password = password;
 
-     return this.http
+    this.result = this.http
      .post('/login', body,httpOptions);
+     this.result.subscribe(data => {
+          if(data != -1) {
+            this.user = data.user;
+            this.userEmitter.emit(this.user);
+          }
+     });
+     return this.result;
    }
+   
+  onUserChange() {
+    return this.userEmitter;
+  }
 
    private extractData(res: Response) {
     let body = res.json();
     return body || {};
-}
+   }
 
 }
